@@ -1,7 +1,20 @@
 <% content_for(:title) { 'Who We Are' } %>
 <h1>Who We Are</h1>
 <ul>
-  <% @emails.each do |email| %>
-      <li><%= image_tag link_to_gravatar email %></li>
-  <% end %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th> Gravatar</th>
+      <th> Name</th>
+      <th> Email</th>
+    </tr>
+    </thead>
+    <% @participants.each do |participant| %>
+        <tr>
+          <td><%= image_tag link_to_gravatar participant.email, 150 %></td>
+          <td><%= participant.name %></td>
+          <td><%= mail_to participant.email %></td>
+        </tr>
+    <% end %>
+  </table>
 </ul>

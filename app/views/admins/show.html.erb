@@ -1,19 +1,15 @@
 <% content_for(:title) { 'Show' } %>
 <%- model_class = Admin -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:nick) %>:</strong></dt>
   <dd><%= @admin.nick %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:password) %>:</strong></dt>
-  <dd><%= @admin.password %></dd>
 </dl>
 
 <table class="table table-striped">
   <thead>
   <tr>
+    <th> Gravatar</th>
     <th> Name</th>
     <th> Email</th>
     <th></th>
@@ -22,6 +18,7 @@
   </thead>
   <% @participants.each do |participant| %>
       <tr>
+        <td><%= image_tag link_to_gravatar participant.email, 50 %></td>
         <td><%= participant.name %></td>
         <td><%= participant.email %></td>
         <td><%= link_to 'Edit', edit_participant_path(participant), :class => 'btn btn-warning' %></td>

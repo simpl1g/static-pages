@@ -6,6 +6,6 @@ class StaticPagesController < ApplicationController
   end
 
   def who_we_are
-    @emails = %w(paveltyk@gmail.com simpli4eg@gmail.com andrey.koleshko@altoros.com)
+    @participants = Participant.all
   end
 end
