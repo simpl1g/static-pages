@@ -1,3 +1,4 @@
+<% content_for(:title) { 'Show' } %>
 <%- model_class = Admin -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
@@ -10,7 +11,27 @@
   <dd><%= @admin.password %></dd>
 </dl>
 
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th> Name</th>
+    <th> Email</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <% @participants.each do |participant| %>
+      <tr>
+        <td><%= participant.name %></td>
+        <td><%= participant.email %></td>
+        <td><%= link_to 'Edit', edit_participant_path(participant), :class => 'btn btn-warning' %></td>
+        <td><%= link_to 'Delete', participant, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger' %></td>
+      </tr>
+  <% end %>
+</table>
+
 <div class="form-actions">
+  <%= link_to 'New participant', new_participant_path(@album), :class => 'btn' %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               admins_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),

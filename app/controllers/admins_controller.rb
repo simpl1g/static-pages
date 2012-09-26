@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
   # GET /admins
   # GET /admins.json
+  before_filter :signed?, except: [:do_login, :login, :logout]
   def index
     @admins = Admin.all
 
@@ -14,7 +15,7 @@ class AdminsController < ApplicationController
   # GET /admins/1.json
   def show
     @admin = Admin.find(params[:id])
-
+    @participants = Participant.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @admin }
@@ -79,5 +80,24 @@ class AdminsController < ApplicationController
       format.html { redirect_to admins_url }
       format.json { head :no_content }
     end
+  end
+
+  def do_login
+    @admin = Admin.find_by_nick_and_password(params[:nick], params[:password])
+    if @admin
+      session[:signed]=@admin.id
+      redirect_to @admin
+    end
+  end
+
+  def logout
+    session[:signed]=nil
+    redirect_to root_path
+  end
+
+  protected
+
+  def signed?
+    redirect_to login_path unless session[:signed]
   end
 end
