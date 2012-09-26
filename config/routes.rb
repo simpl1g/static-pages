@@ -1,4 +1,6 @@
 StaticPages::Application.routes.draw do
+  resources :admins
+
   root :to => 'static_pages#home'
   get "static_pages/home", :as => :home
   get "static_pages/about", :as => :about
