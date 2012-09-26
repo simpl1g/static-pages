@@ -1,7 +1,7 @@
 <% content_for(:title) { 'Who We Are' } %>
 <h1>Who We Are</h1>
 <ul>
-  <% %w(paveltyk@gmail.com simpli4eg@gmail.com andrey.koleshko@altoros.com).each do |email| %>
-      <li><%= image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?d=monsterid" %></li>
+  <% @emails.each do |email| %>
+      <li><%= image_tag link_to_gravatar email %></li>
   <% end %>
 </ul>
