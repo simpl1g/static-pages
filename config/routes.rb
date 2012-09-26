@@ -1,6 +1,8 @@
 StaticPages::Application.routes.draw do
+  root :to => 'static_pages#home'
   get "static_pages/home", :as => :home
   get "static_pages/about", :as => :about
+  match "who-we-are" => 'static_pages#who_we_are', :as => :who_we_are
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
