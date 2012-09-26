@@ -87,6 +87,8 @@ class AdminsController < ApplicationController
     if @admin
       session[:signed]=@admin.id
       redirect_to @admin
+    else
+      render :login
     end
   end
 

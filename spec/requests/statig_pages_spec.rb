@@ -13,10 +13,6 @@ describe "StaticPages" do
       page.should have_content('Welcome to Ruby Gardens Home')
     end
 
-    it "has link to about page" do
-      click_link 'About'
-      current_path.should == '/static_pages/about'
-    end
   end
 
   describe "About page" do
@@ -31,10 +27,6 @@ describe "StaticPages" do
       page.should have_content('About Ruby Gardens')
     end
 
-    it "has link to home page" do
-      click_link 'Home'
-      current_path.should == '/static_pages/home'
-    end
   end
 
   describe "About page" do

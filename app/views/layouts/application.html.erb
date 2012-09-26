@@ -22,7 +22,7 @@
 
       <div class="container nav-collapse">
         <ul class="nav">
-          <%= menu_links ([{'Trolo' => about_path}])%>
+          <%= menu_links %>
           <% if session[:signed] %>
               <li><%= link_to 'LogOut', logout_path %></li>
               <li><%= link_to 'Admin', admin_path(session[:signed]) %></li>
@@ -56,10 +56,5 @@
 
 <%= javascript_include_tag "application" %>
 
-<%= debug params %>
-
 </body>
 </html>
-<li><%= link_to 'Home', home_path %></li>
-<li><%= link_to 'Who We Are', who_we_are_path %></li>
-<li><%= link_to 'About', about_path %></li>
