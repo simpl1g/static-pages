@@ -18,13 +18,11 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">Rails Garden</a>
+      <a class="brand" href="<%= root_path %>">Rails Garden</a>
 
       <div class="container nav-collapse">
         <ul class="nav">
-          <li><%= link_to 'Home', home_path %></li>
-          <li><%= link_to 'Who We Are', who_we_are_path %></li>
-          <li><%= link_to 'About', about_path %></li>
+          <%= menu_links ([{'Trolo' => about_path}])%>
           <% if session[:signed] %>
               <li><%= link_to 'LogOut', logout_path %></li>
               <li><%= link_to 'Admin', admin_path(session[:signed]) %></li>
@@ -50,7 +48,7 @@
   <!--/content-->
 
   <footer>
-    <p>&copy; Company 2012</p>
+    <p>&copy; Altoros 2012</p>
   </footer>
 
 </div>
@@ -62,3 +60,6 @@
 
 </body>
 </html>
+<li><%= link_to 'Home', home_path %></li>
+<li><%= link_to 'Who We Are', who_we_are_path %></li>
+<li><%= link_to 'About', about_path %></li>
