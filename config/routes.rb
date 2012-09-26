@@ -1,8 +1,13 @@
 StaticPages::Application.routes.draw do
+  resources :admins
+  resources :participants, only: [:new, :create, :edit, :destroy, :update]
   root :to => 'static_pages#home'
   get "static_pages/home", :as => :home
   get "static_pages/about", :as => :about
   match "who-we-are" => 'static_pages#who_we_are', :as => :who_we_are
+  match "/login" => 'admins#login', :as => :login
+  match "/do_login" => 'admins#do_login', :as => :do_login
+  match "/logout" => 'admins#logout', :as => :logout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

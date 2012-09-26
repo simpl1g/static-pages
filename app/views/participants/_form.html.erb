@@ -1,0 +1,31 @@
+<%= form_for @participant, :html => { :class => 'form-horizontal' } do |f| %>
+    <% if @participant.errors.any? %>
+        <div id="error_explanation" class="alert alert-error">
+          <h4><%= pluralize(@participant.errors.count, "error") %> prohibited this album from being saved:</h4>
+
+          <ul>
+            <% @participant.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                @admin, :class => 'btn' %>
+  </div>
+<% end %>

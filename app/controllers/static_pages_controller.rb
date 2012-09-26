@@ -4,4 +4,8 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  def who_we_are
+    @participants = Participant.all
+  end
 end
